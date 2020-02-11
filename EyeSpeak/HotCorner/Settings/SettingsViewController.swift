@@ -104,6 +104,9 @@ class SettingsViewController: UICollectionViewController, MFMailComposeViewContr
         case .contactDevs:
             guard MFMailComposeViewController.canSendMail() else {
                 NSLog("Mail composer failed to send mail", [])
+                let alert = UIAlertController(title: "Email Error", message: "Failed to create email message. Does your device have an email account linked?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 break
             }
             
